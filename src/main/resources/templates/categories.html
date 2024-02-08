@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    <!-- Include your CSS files here -->
+</head>
+<body>
+<h1>Book Categories</h1>
+
+<!-- Table to display categories -->
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="category : ${categories}">
+        <td th:text="${category.id}">1</td>
+        <td th:text="${category.name}">Fiction</td>
+        <td>
+            <!-- Add your action buttons here (e.g., edit, delete) -->
+            <a th:href="@{/editCategory(id=${category.id})}">Edit</a>
+            <a th:href="@{/deleteCategory(id=${category.id})}"
+               onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Link to add a new category -->
+<a href="/addCategory">Add New Category</a>
+
+</body>
+</html>
